@@ -1,0 +1,207 @@
+I. Project name, Licensing and Documentation
+
+  1. Portable Abstracted Linked Lists Library (libpall).
+
+  2. Home page: http://www.ucodev.org
+
+  3. Licensed under GNU General Public License version 3. Please read the
+     LICENSE file located at the project base directory.
+
+  4. Refer to header files at src/ directory for interface documentation.
+
+  5. Doxygen (www.doxygen.org) compatible documentation.
+
+  6. All dates are in format (dd/mm/yyyy).
+
+
+II. Compliance and Portability
+
+  1. POSIX.1-2001 and POSIX.1-2008 compliant.
+
+  2. Written in C programming language and should be compiled by C11 or C99
+     compliant compilers supporting uint32_t optional data type.
+
+  3. Compatible with C++ compilers conforming to C++03 or C++11.
+
+  4. Some wrappers are included for Microsoft Windows compatibility since
+     Microsoft Windows XP. See Notes.
+
+  5. List of compatible compilers:
+
+      Name: GCC / G++
+      URL:  http://gcc.gnu.org
+
+      Name: Clang / Clang ++
+      URL:  http://clang.llvm.org
+
+      Name: MinGW (GCC)
+      URL:  http://www.mingw.org
+
+      Name: Microsoft Visual Studio Express 2012
+      URL:  http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-products
+
+
+III. Notes
+
+ 1. This library is intended to be used in portable C applications. However,
+    it is important to note that it uses optional data types from C99 and C11
+    such as uint32_t.
+
+    Since there are compilers that do not implement these optional data types,
+    a ui32_t data type was included in this this library, but it doesn't cover
+    all the cases.
+
+    If your compilers does not implement C99 or C11 optional types you may need
+    to include aditional third-party libraries alongside with this library in
+    order to enable the support for those data types.
+
+    The reason why uint32_t is required, is to grant a fixed size for serialized
+    metadata in order to make it portable through all systems. As an example,
+    you can serialize an entire list over the network through a socket and read
+    it in the other end successfully, even if the receiving system is running on
+    a different architecture.
+
+
+ 2. BSTs are based on POSIX tsearch(). Microsoft Developer Network (MSDN)
+    states that tsearch() is supported by Subsystem for UNIX-based Applications.
+    (http://msdn.microsoft.com/en-us/library/cc776816, Updated on August 22,
+    2005). This may require the installation of additional SDKs. Refer to
+    MSDN (http://msdn.microsoft.com) for more information regarding this topic.
+
+
+ 3. Although libpall is C++ compatible, note that C++ introduces programming
+    paradigms that shall be considered first before using this library.
+
+
+IV. Examples
+
+ 1. Check example/ directory on the project base directory.
+
+
+V. Implementations
+
+ 1. Circular Linked List (CLL)
+
+    Generic Type: List
+
+    Structure: Circular Double Linked.
+
+    Header file: cll.h
+
+    Element Distribution:
+
+                       +--------+           +--------+
+                       |        |           |        |
+     +-------------->  |  tail  |  <----->  |  head  |  <--------------+
+     |                 |  (n)   |           |  (1)   |                 |
+     |                 +--------+           +--------+                 |
+     |                                                                 |
+     |      +---------+          +---------+          +---------+      |
+     |      |         |          |         |          |         |      |
+     +--->  |  n - 1  |  <---->  |   ...   |  <---->  |    2    |  <---+
+            |         |          |         |          |         |
+            +---------+          +---------+          +---------+
+
+
+ 
+ 2. Hash Mod Balanced Tree CLL (HMBT-CLL)
+
+    Generic Type: B-tree
+
+    Structure: Array of pointers to CLLs.
+
+    Header file: hmbt_cll.h
+
+    Element Distribution:
+
+        i(e) == index(element) == ( hash(element) % sizeof(hmbt_array) )
+
+    +---------+---------+---------+---------+---------+---------+---------+
+    |         |         |         |         |         |         |         |
+    |  i(e)   |  i(e)   |  i(e)   |  i(e)   |  i(e)   |  i(e)   |  i(e)   |
+    |         |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+ 
+         .         .         .         .         .         .         .
+         .         .         .         .         .         .         .
+         .         .         .         .         .         .         .
+        CLL       CLL       CLL       CLL       CLL       CLL       CLL
+
+
+
+ 3. First In First Out (FIFO)
+
+    Generic Type: Queue
+
+    Structure: Same as CLL. Pushed elements are inserted at CLL head. Popped
+               elements are removed from CLL tail.
+
+    Header file: fifo.h
+
+    Element Distribution: Same as CLL.
+
+
+
+ 4. Last In First Out (LIFO)
+
+    Generic Type: Stack
+
+    Structure: Same as CLL. Pushed elements are inserted at CLL head. Popped
+               elements are removed from CLL head.
+
+    Header file: fifo.h
+
+    Element Distribution: Same as CLL.
+
+
+
+ 5. Binary Search Tree (BST)
+
+    Generic Type: Binary Search Tree
+
+    Structure: Depends on tsearch() implementation.
+
+    Header file: bst.h
+
+    Element Distribution:
+
+                             +--------+
+                             |        |
+                             |  root  |
+                             |        |
+                             +--------+
+                             /        \
+                            /          \
+                           /            \
+                     +---------+     +---------+
+                     |         |     |         |
+                     |  left   |     |  right  |
+                     |         |     |         |
+                     +---------+     +---------+
+                        /   \            /  \
+                      ...   ...        ...  ...
+
+
+
+ 6. Hash Mod Balanced Tree BST (HMBT-BST)
+
+    Generic Type: B-tree
+
+    Structure: Array of pointers to BSTs.
+
+    Header file: hmbt_bst.h
+
+    Element Distribution:
+
+        i(e) == index(element) == ( hash(element) % sizeof(hmbt_array) )
+
+    +---------+---------+---------+---------+---------+---------+---------+
+    |         |         |         |         |         |         |         |
+    |  i(e)   |  i(e)   |  i(e)   |  i(e)   |  i(e)   |  i(e)   |  i(e)   |
+    |         |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+ 
+         .         .         .         .         .         .         .
+         .         .         .         .         .         .         .
+         .         .         .         .         .         .         .
+        BST       BST       BST       BST       BST       BST       BST
+
+

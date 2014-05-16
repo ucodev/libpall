@@ -1,0 +1,51 @@
+#!/bin/bash
+
+if ! [ -e ".done" ]; then
+	echo "Run 'do' first"
+	exit 1
+fi
+
+if [ `id -u` -ne 0 ]; then
+	echo "Current user is not root"
+	exit 1
+fi
+
+mkdir -p /usr/lib
+
+if [ $? -ne 0 ]; then
+	echo "Failed to create /usr/lib"
+	exit 1
+fi
+
+mkdir -p /usr/include/pall/
+
+if [ $? -ne 0 ]; then
+	echo "Failed to create /usr/include/pall"
+	exit 1
+fi
+
+cp src/libpall.so /usr/lib/
+
+if [ $? -ne 0 ]; then
+	echo "Failed to copy src/libpall.so to /usr/lib"
+	exit 1;
+fi
+
+cp src/*.h /usr/include/pall/
+
+if [ $? -ne 0 ]; then
+	echo "Failed to copy src/*.h to /usr/include/pall"
+	exit 1;
+fi
+
+ldconfig
+
+if [ $? -ne 0 ]; then
+	echo "Failed to execute ldconfig"
+	exit 1;
+fi
+
+echo "Installation complete."
+
+exit 0
+
