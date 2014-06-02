@@ -5,17 +5,22 @@
   Home page: http://www.ucodev.org
 
 
-2. Version
+2. Briefing
+
+  libpall is an abstraction layer for the management of linked lists, queues, stacks and trees, implementing simplified data serialization, iterators and statistical counters for all available layers.
+
+
+3. Version
 
   $ cat VERSION
 
 
-3. Documentation
+4. Documentation
 
   $ cat doc/overview.txt
 
 
-4. Build and Install
+5. Build and Install
 
   # ./do
   # ./install
@@ -26,7 +31,7 @@
   # ./install
 
 
-5. Examples
+6. Examples
 
   $ cd example
   $ ./ex_cll_simple
