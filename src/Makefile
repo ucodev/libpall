@@ -1,5 +1,5 @@
 CC=`cat ../.compiler`
-CCFLAGS=-fPIC -fstrict-aliasing -O2 -Wall -Werror -pedantic -std=c11
+CCFLAGS=-fPIC -fstrict-aliasing -O2 -Wall -Werror -pedantic
 ECFLAGS=`cat ../.ecflags`
 LDFLAGS=-shared -s
 ELFLAGS=`cat ../.elflags`
