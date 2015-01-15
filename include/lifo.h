@@ -27,6 +27,7 @@
 #ifndef LIBPALL_LIFO_H
 #define LIBPALL_LIFO_H
 
+#include "config.h"
 #include "pall.h"
 #include "cll.h"
 
@@ -202,6 +203,9 @@ struct lifo_handler {
  * @see pall_lifo_destroy()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct lifo_handler *pall_lifo_init(
 		void (*destroy) (void *data),
 		int (*ser_data) (pall_fd_t fd, void *data),
@@ -215,6 +219,9 @@ struct lifo_handler *pall_lifo_init(
  * @see pall_lifo_init()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_destroy(struct lifo_handler *h);
 
 /**
@@ -240,6 +247,9 @@ void pall_lifo_destroy(struct lifo_handler *h);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_lifo_push(struct lifo_handler *h, void *data);
 
 /**
@@ -259,6 +269,9 @@ int pall_lifo_push(struct lifo_handler *h, void *data);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_lifo_pop(struct lifo_handler *h);
 
 /**
@@ -290,6 +303,9 @@ void *pall_lifo_pop(struct lifo_handler *h);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_lifo_serialize(struct lifo_handler *h, pall_fd_t fd);
 
 /**
@@ -322,6 +338,9 @@ int pall_lifo_serialize(struct lifo_handler *h, pall_fd_t fd);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_lifo_unserialize(struct lifo_handler *h, pall_fd_t fd);
 
 /**
@@ -342,6 +361,9 @@ int pall_lifo_unserialize(struct lifo_handler *h, pall_fd_t fd);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct lifo_stat *pall_lifo_stat(struct lifo_handler *h);
 
 /**
@@ -357,6 +379,9 @@ struct lifo_stat *pall_lifo_stat(struct lifo_handler *h);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_stat_reset(struct lifo_handler *h);
 
 /**
@@ -376,6 +401,9 @@ void pall_lifo_stat_reset(struct lifo_handler *h);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_lifo_count(struct lifo_handler *h);
 
 /**
@@ -393,6 +421,9 @@ ui32_t pall_lifo_count(struct lifo_handler *h);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_collapse(struct lifo_handler *h);
 
 /**
@@ -417,6 +448,9 @@ void pall_lifo_collapse(struct lifo_handler *h);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_lifo_iterate(struct lifo_handler *h);
 
 /**
@@ -444,6 +478,9 @@ void *pall_lifo_iterate(struct lifo_handler *h);
  * @see lifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_rewind(struct lifo_handler *h, int to);
 
 #endif

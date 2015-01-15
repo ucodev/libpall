@@ -27,6 +27,7 @@
 #ifndef LIBPALL_FIFO_H
 #define LIBPALL_FIFO_H
 
+#include "config.h"
 #include "pall.h"
 #include "cll.h"
 
@@ -203,6 +204,9 @@ struct fifo_handler {
  * @see pall_fifo_destroy()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct fifo_handler *pall_fifo_init(
 		void (*destroy) (void *data),
 		int (*ser_data) (pall_fd_t fd, void *data),
@@ -216,6 +220,9 @@ struct fifo_handler *pall_fifo_init(
  * @see pall_fifo_init()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_fifo_destroy(struct fifo_handler *h);
 
 /**
@@ -241,6 +248,9 @@ void pall_fifo_destroy(struct fifo_handler *h);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_fifo_push(struct fifo_handler *h, void *data);
 
 /**
@@ -260,6 +270,9 @@ int pall_fifo_push(struct fifo_handler *h, void *data);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_fifo_pop(struct fifo_handler *h);
 
 /**
@@ -291,6 +304,9 @@ void *pall_fifo_pop(struct fifo_handler *h);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_fifo_serialize(struct fifo_handler *h, pall_fd_t fd);
 
 /**
@@ -323,6 +339,9 @@ int pall_fifo_serialize(struct fifo_handler *h, pall_fd_t fd);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_fifo_unserialize(struct fifo_handler *h, pall_fd_t fd);
 
 /**
@@ -343,6 +362,9 @@ int pall_fifo_unserialize(struct fifo_handler *h, pall_fd_t fd);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct fifo_stat *pall_fifo_stat(struct fifo_handler *h);
 
 /**
@@ -358,6 +380,9 @@ struct fifo_stat *pall_fifo_stat(struct fifo_handler *h);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_fifo_stat_reset(struct fifo_handler *h);
 
 /**
@@ -377,6 +402,9 @@ void pall_fifo_stat_reset(struct fifo_handler *h);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_fifo_count(struct fifo_handler *h);
 
 /**
@@ -395,6 +423,9 @@ ui32_t pall_fifo_count(struct fifo_handler *h);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_fifo_collapse(struct fifo_handler *h);
 
 /**
@@ -419,6 +450,9 @@ void pall_fifo_collapse(struct fifo_handler *h);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_fifo_iterate(struct fifo_handler *h);
 
 /**
@@ -446,6 +480,9 @@ void *pall_fifo_iterate(struct fifo_handler *h);
  * @see fifo_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_fifo_rewind(struct fifo_handler *h, int to);
 
 #endif

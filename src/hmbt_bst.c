@@ -264,6 +264,9 @@ static void _hmbt_bst_rewind(struct hmbt_bst_handler *handler, int to) {
 	handler->_stat.rewind ++;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_bst_handler *pall_hmbt_bst_init(
 		int (*compare) (const void *d1, const void *d2),
 		void (*destroy) (void *data),
@@ -336,6 +339,9 @@ struct hmbt_bst_handler *pall_hmbt_bst_init(
 	return handler;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_destroy(struct hmbt_bst_handler *h) {
 	ui32_t i = 0;
 
@@ -349,46 +355,79 @@ void pall_hmbt_bst_destroy(struct hmbt_bst_handler *h) {
 	mm_free(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_insert(struct hmbt_bst_handler *h, void *data) {
 	return h->insert(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_delete(struct hmbt_bst_handler *h, void *data) {
 	return h->del(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_bst_search(struct hmbt_bst_handler *h, void *data) {
 	return h->search(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_serialize(struct hmbt_bst_handler *h, pall_fd_t fd) {
 	return h->serialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_unserialize(struct hmbt_bst_handler *h, pall_fd_t fd) {
 	return h->unserialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_bst_stat *pall_hmbt_bst_stat(struct hmbt_bst_handler *h) {
 	return h->stat(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_stat_reset(struct hmbt_bst_handler *h) {
 	h->stat_reset(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_bst_count(struct hmbt_bst_handler *h) {
 	return h->count(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_collapse(struct hmbt_bst_handler *h) {
 	h->collapse(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_bst_iterate(struct hmbt_bst_handler *h) {
 	return h->iterate(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_rewind(struct hmbt_bst_handler *h, int to) {
 	h->rewind(h, to);
 }

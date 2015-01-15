@@ -27,6 +27,7 @@
 #ifndef LIBPALL_HMBT_BST_H
 #define LIBPALL_HMBT_BST_H
 
+#include "config.h"
 #include "pall.h"
 #include "bst.h"
 
@@ -293,6 +294,9 @@ struct hmbt_bst_handler {
  * @see pall_hmbt_bst_destroy()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_bst_handler *pall_hmbt_bst_init(
 		int (*compare) (const void *d1, const void *d2),
 		void (*destroy) (void *data),
@@ -309,6 +313,9 @@ struct hmbt_bst_handler *pall_hmbt_bst_init(
  * @see pall_hmbt_bst_init()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_destroy(struct hmbt_bst_handler *h);
 
 /**
@@ -335,6 +342,9 @@ void pall_hmbt_bst_destroy(struct hmbt_bst_handler *h);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_insert(struct hmbt_bst_handler *h, void *data);
 
 /**
@@ -360,6 +370,9 @@ int pall_hmbt_bst_insert(struct hmbt_bst_handler *h, void *data);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_delete(struct hmbt_bst_handler *h, void *data);
 
 /**
@@ -384,6 +397,9 @@ int pall_hmbt_bst_delete(struct hmbt_bst_handler *h, void *data);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_bst_search(struct hmbt_bst_handler *h, void *data);
 
 /**
@@ -415,6 +431,9 @@ void *pall_hmbt_bst_search(struct hmbt_bst_handler *h, void *data);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_serialize(struct hmbt_bst_handler *h, pall_fd_t fd);
 
 /**
@@ -447,6 +466,9 @@ int pall_hmbt_bst_serialize(struct hmbt_bst_handler *h, pall_fd_t fd);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_bst_unserialize(struct hmbt_bst_handler *h, pall_fd_t fd);
 
 /**
@@ -467,6 +489,9 @@ int pall_hmbt_bst_unserialize(struct hmbt_bst_handler *h, pall_fd_t fd);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_bst_stat *pall_hmbt_bst_stat(struct hmbt_bst_handler *h);
 
 /**
@@ -482,6 +507,9 @@ struct hmbt_bst_stat *pall_hmbt_bst_stat(struct hmbt_bst_handler *h);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_stat_reset(struct hmbt_bst_handler *h);
 
 /**
@@ -501,6 +529,9 @@ void pall_hmbt_bst_stat_reset(struct hmbt_bst_handler *h);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_bst_count(struct hmbt_bst_handler *h);
 
 /**
@@ -520,6 +551,9 @@ ui32_t pall_hmbt_bst_count(struct hmbt_bst_handler *h);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_collapse(struct hmbt_bst_handler *h);
 
 /**
@@ -545,6 +579,9 @@ void pall_hmbt_bst_collapse(struct hmbt_bst_handler *h);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_bst_iterate(struct hmbt_bst_handler *h);
 
 /**
@@ -576,6 +613,9 @@ void *pall_hmbt_bst_iterate(struct hmbt_bst_handler *h);
  * @see hmbt_bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_bst_rewind(struct hmbt_bst_handler *h, int to);
 
 #endif

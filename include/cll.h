@@ -27,6 +27,7 @@
 #ifndef LIBPALL_CLL_H
 #define LIBPALL_CLL_H
 
+#include "config.h"
 #include "pall.h"
 
 /* Configuration Options */
@@ -365,6 +366,9 @@ struct cll_handler {
  * @see pall_cll_destroy()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct cll_handler *pall_cll_init(
 		int (*compare) (const void *d1, const void *d2),
 		void (*destroy) (void *data),
@@ -379,6 +383,9 @@ struct cll_handler *pall_cll_init(
  * @see pall_cll_init()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_destroy(struct cll_handler *h);
 
 /**
@@ -405,6 +412,9 @@ void pall_cll_destroy(struct cll_handler *h);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_insert(struct cll_handler *h, void *data);
 
 /**
@@ -430,6 +440,9 @@ int pall_cll_insert(struct cll_handler *h, void *data);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_delete(struct cll_handler *h, void *data);
 
 /**
@@ -454,6 +467,9 @@ int pall_cll_delete(struct cll_handler *h, void *data);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_search(struct cll_handler *h, void *data);
 
 /**
@@ -485,6 +501,9 @@ void *pall_cll_search(struct cll_handler *h, void *data);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_serialize(struct cll_handler *h, pall_fd_t fd);
 
 /**
@@ -517,6 +536,9 @@ int pall_cll_serialize(struct cll_handler *h, pall_fd_t fd);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_unserialize(struct cll_handler *h, pall_fd_t fd);
 
 /**
@@ -537,6 +559,9 @@ int pall_cll_unserialize(struct cll_handler *h, pall_fd_t fd);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct cll_stat *pall_cll_stat(struct cll_handler *h);
 
 /**
@@ -552,6 +577,9 @@ struct cll_stat *pall_cll_stat(struct cll_handler *h);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_stat_reset(struct cll_handler *h);
 
 /**
@@ -571,6 +599,9 @@ void pall_cll_stat_reset(struct cll_handler *h);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_cll_count(struct cll_handler *h);
 
 /**
@@ -595,6 +626,9 @@ ui32_t pall_cll_count(struct cll_handler *h);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_pope(struct cll_handler *h, void *data);
 
 /**
@@ -614,6 +648,9 @@ void *pall_cll_pope(struct cll_handler *h, void *data);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_poph(struct cll_handler *h);
 
 /**
@@ -633,6 +670,9 @@ void *pall_cll_poph(struct cll_handler *h);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_collapse(struct cll_handler *h);
 
 /**
@@ -657,6 +697,9 @@ void pall_cll_collapse(struct cll_handler *h);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_iterate(struct cll_handler *h);
 
 /**
@@ -684,6 +727,9 @@ void *pall_cll_iterate(struct cll_handler *h);
  * @see cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_rewind(struct cll_handler *h, int to);
 
 /**
@@ -719,6 +765,9 @@ void pall_cll_rewind(struct cll_handler *h, int to);
  * @see CONFIG_INSERT_HEAD
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_cll_set_config(struct cll_handler *h, ui32_t flags);
 
 /**
@@ -747,6 +796,9 @@ ui32_t pall_cll_set_config(struct cll_handler *h, ui32_t flags);
  * @see CONFIG_INSERT_HEAD
  *
  */ 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_cll_get_config(struct cll_handler *h);
 
 #endif

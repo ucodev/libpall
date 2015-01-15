@@ -92,6 +92,9 @@ static void _lifo_rewind(struct lifo_handler *handler, int to) {
 	handler->lifo->rewind(handler->lifo, to);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct lifo_handler *pall_lifo_init(
 		void (*destroy) (void *data),
 		int (*ser_data) (pall_fd_t fd, void *data),
@@ -132,6 +135,9 @@ struct lifo_handler *pall_lifo_init(
 	return handler;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_destroy(struct lifo_handler *handler) {
 	handler->collapse(handler);
 
@@ -140,42 +146,72 @@ void pall_lifo_destroy(struct lifo_handler *handler) {
 	mm_free(handler);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_lifo_push(struct lifo_handler *h, void *data) {
 	return h->push(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_lifo_pop(struct lifo_handler *h) {
 	return h->pop(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_lifo_serialize(struct lifo_handler *h, pall_fd_t fd) {
 	return h->serialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_lifo_unserialize(struct lifo_handler *h, pall_fd_t fd) {
 	return h->unserialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct lifo_stat *pall_lifo_stat(struct lifo_handler *h) {
 	return h->stat(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_stat_reset(struct lifo_handler *h) {
 	h->stat_reset(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_lifo_count(struct lifo_handler *h) {
 	return h->count(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_collapse(struct lifo_handler *h) {
 	h->collapse(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_lifo_iterate(struct lifo_handler *h) {
 	return h->iterate(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_lifo_rewind(struct lifo_handler *h, int to) {
 	h->rewind(h, to);
 }

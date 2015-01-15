@@ -27,6 +27,7 @@
 #ifndef LIBPALL_HMBT_CLL_H
 #define LIBPALL_HMBT_CLL_H
 
+#include "config.h"
 #include "pall.h"
 #include "cll.h"
 
@@ -331,6 +332,9 @@ struct hmbt_cll_handler {
  * @see pall_hmbt_cll_destroy()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_cll_handler *pall_hmbt_cll_init(
 		int (*compare) (const void *d1, const void *d2),
 		void (*destroy) (void *data),
@@ -347,6 +351,9 @@ struct hmbt_cll_handler *pall_hmbt_cll_init(
  * @see pall_hmbt_cll_init()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_destroy(struct hmbt_cll_handler *h);
 
 /**
@@ -373,6 +380,9 @@ void pall_hmbt_cll_destroy(struct hmbt_cll_handler *h);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_insert(struct hmbt_cll_handler *h, void *data);
 
 /**
@@ -398,6 +408,9 @@ int pall_hmbt_cll_insert(struct hmbt_cll_handler *h, void *data);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_delete(struct hmbt_cll_handler *h, void *data);
 
 /**
@@ -422,6 +435,9 @@ int pall_hmbt_cll_delete(struct hmbt_cll_handler *h, void *data);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_search(struct hmbt_cll_handler *h, void *data);
 
 /**
@@ -453,6 +469,9 @@ void *pall_hmbt_cll_search(struct hmbt_cll_handler *h, void *data);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_serialize(struct hmbt_cll_handler *h, pall_fd_t fd);
 
 /**
@@ -485,6 +504,9 @@ int pall_hmbt_cll_serialize(struct hmbt_cll_handler *h, pall_fd_t fd);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_unserialize(struct hmbt_cll_handler *h, pall_fd_t fd);
 
 /**
@@ -505,6 +527,9 @@ int pall_hmbt_cll_unserialize(struct hmbt_cll_handler *h, pall_fd_t fd);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_cll_stat *pall_hmbt_cll_stat(struct hmbt_cll_handler *h);
 
 /**
@@ -520,6 +545,9 @@ struct hmbt_cll_stat *pall_hmbt_cll_stat(struct hmbt_cll_handler *h);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_stat_reset(struct hmbt_cll_handler *h);
 
 /**
@@ -539,6 +567,9 @@ void pall_hmbt_cll_stat_reset(struct hmbt_cll_handler *h);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_cll_count(struct hmbt_cll_handler *h);
 
 /**
@@ -563,6 +594,9 @@ ui32_t pall_hmbt_cll_count(struct hmbt_cll_handler *h);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_pope(struct hmbt_cll_handler *h, void *data);
 
 /**
@@ -587,6 +621,9 @@ void *pall_hmbt_cll_pope(struct hmbt_cll_handler *h, void *data);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_poph_elem(struct hmbt_cll_handler *h, void *data);
 
 /**
@@ -610,6 +647,9 @@ void *pall_hmbt_cll_poph_elem(struct hmbt_cll_handler *h, void *data);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_poph_index(struct hmbt_cll_handler *h, ui32_t index);
 
 /**
@@ -629,6 +669,9 @@ void *pall_hmbt_cll_poph_index(struct hmbt_cll_handler *h, ui32_t index);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_collapse(struct hmbt_cll_handler *h);
 
 /**
@@ -654,6 +697,9 @@ void pall_hmbt_cll_collapse(struct hmbt_cll_handler *h);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_iterate(struct hmbt_cll_handler *h);
 
 /**
@@ -683,6 +729,9 @@ void *pall_hmbt_cll_iterate(struct hmbt_cll_handler *h);
  * @see hmbt_cll_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_rewind(struct hmbt_cll_handler *h, int to);
 
 /**
@@ -718,6 +767,9 @@ void pall_hmbt_cll_rewind(struct hmbt_cll_handler *h, int to);
  * @see CONFIG_INSERT_HEAD
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_cll_set_config(struct hmbt_cll_handler *h, ui32_t flags);
 
 /**
@@ -745,7 +797,10 @@ ui32_t pall_hmbt_cll_set_config(struct hmbt_cll_handler *h, ui32_t flags);
  * @see CONFIG_INSERT_TAIL
  * @see CONFIG_INSERT_HEAD
  *
- */ 
+ */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_cll_get_config(struct hmbt_cll_handler *h);
 
 #endif

@@ -27,6 +27,7 @@
 #ifndef LIBPALL_BST_H
 #define LIBPALL_BST_H
 
+#include "config.h"
 #include "pall.h"
 #include "fifo.h"
 #include "lifo.h"
@@ -241,6 +242,9 @@ struct bst_node {
  * @see pall_bst_destroy()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct bst_handler *pall_bst_init(
 		int (*compare) (const void *d1, const void *d2),
 		void (*destroy) (void *data),
@@ -255,6 +259,9 @@ struct bst_handler *pall_bst_init(
  * @see pall_bst_init()
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_destroy(struct bst_handler *h);
 
 /**
@@ -281,6 +288,9 @@ void pall_bst_destroy(struct bst_handler *h);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_insert(struct bst_handler *h, void *data);
 
 /**
@@ -306,6 +316,9 @@ int pall_bst_insert(struct bst_handler *h, void *data);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_delete(struct bst_handler *h, void *data);
 
 /**
@@ -330,6 +343,9 @@ int pall_bst_delete(struct bst_handler *h, void *data);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_bst_search(struct bst_handler *h, void *data);
 
 /**
@@ -361,6 +377,9 @@ void *pall_bst_search(struct bst_handler *h, void *data);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_serialize(struct bst_handler *h, pall_fd_t fd);
 
 /**
@@ -393,6 +412,9 @@ int pall_bst_serialize(struct bst_handler *h, pall_fd_t fd);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_unserialize(struct bst_handler *h, pall_fd_t fd);
 
 /**
@@ -413,6 +435,9 @@ int pall_bst_unserialize(struct bst_handler *h, pall_fd_t fd);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct bst_stat *pall_bst_stat(struct bst_handler *h);
 
 /**
@@ -428,6 +453,9 @@ struct bst_stat *pall_bst_stat(struct bst_handler *h);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_stat_reset(struct bst_handler *h);
 
 /**
@@ -447,6 +475,9 @@ void pall_bst_stat_reset(struct bst_handler *h);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_bst_count(struct bst_handler *h);
 
 /**
@@ -466,6 +497,9 @@ ui32_t pall_bst_count(struct bst_handler *h);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_collapse(struct bst_handler *h);
 
 /**
@@ -491,6 +525,9 @@ void pall_bst_collapse(struct bst_handler *h);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_bst_iterate(struct bst_handler *h);
 
 /**
@@ -520,6 +557,9 @@ void *pall_bst_iterate(struct bst_handler *h);
  * @see bst_stat
  *
  */
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_rewind(struct bst_handler *h, int to);
 
 #endif

@@ -545,6 +545,9 @@ static ui32_t _cll_get_config(struct cll_handler *handler) {
 	return handler->_config_flags;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct cll_handler *pall_cll_init(
 		int (*compare) (const void *src, const void *dst),
 		void (*destroy) (void *data),
@@ -594,68 +597,116 @@ struct cll_handler *pall_cll_init(
 	return handler;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_destroy(struct cll_handler *h) {
 	h->collapse(h);
 
 	mm_free(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_insert(struct cll_handler *h, void *data) {
 	return h->insert(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_delete(struct cll_handler *h, void *data) {
 	return h->del(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_search(struct cll_handler *h, void *data) {
 	return h->search(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_serialize(struct cll_handler *h, pall_fd_t fd) {
 	return h->serialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_cll_unserialize(struct cll_handler *h, pall_fd_t fd) {
 	return h->unserialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct cll_stat *pall_cll_stat(struct cll_handler *h) {
 	return h->stat(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_stat_reset(struct cll_handler *h) {
 	h->stat_reset(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_cll_count(struct cll_handler *h) {
 	return h->count(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_pope(struct cll_handler *h, void *data) {
 	return h->pope(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_poph(struct cll_handler *h) {
 	return h->poph(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_collapse(struct cll_handler *h) {
 	h->collapse(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_cll_iterate(struct cll_handler *h) {
 	return h->iterate(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_cll_rewind(struct cll_handler *h, int to) {
 	h->rewind(h, to);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_cll_set_config(struct cll_handler *h, ui32_t flags) {
 	return h->set_config(h, flags);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_cll_get_config(struct cll_handler *h) {
 	return h->get_config(h);
 }

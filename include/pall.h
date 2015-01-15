@@ -3,9 +3,9 @@
  * @brief Portable Abstracted Linked Lists Library (libpall)
  *        Configuration header for libpall
  *
- * Date: 31-08-2012
+ * Date: 15-01-2015
  * 
- * Copyright 2012 Pedro A. Hortas (pah@ucodev.org)
+ * Copyright 2012-2015 Pedro A. Hortas (pah@ucodev.org)
  *
  * This file is part of libpall.
  *
@@ -27,6 +27,8 @@
 #ifndef LIBPALL_H
 #define LIBPALL_H
 
+#include "config.h"
+
 /**
  * @typedef pall_fd_t
  *
@@ -45,9 +47,9 @@
  *
  */
 
- #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
-  #include <windows.h>
+ #ifdef COMPILE_WIN32
   #include <winsock2.h>
+  #include <windows.h>
 
   typedef HANDLE pall_fd_t;
   typedef unsigned __int32 ui32_t;

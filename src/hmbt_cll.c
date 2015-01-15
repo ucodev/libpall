@@ -326,6 +326,9 @@ static ui32_t _hmbt_cll_get_config(struct hmbt_cll_handler *handler) {
 	return handler->array[0]->get_config(handler->array[0]);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_cll_handler *pall_hmbt_cll_init(
 		int (*compare) (const void *d1, const void *d2),
 		void (*destroy) (void *data),
@@ -403,6 +406,9 @@ struct hmbt_cll_handler *pall_hmbt_cll_init(
 	return handler;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_destroy(struct hmbt_cll_handler *h) {
 	ui32_t i = 0;
 
@@ -416,66 +422,114 @@ void pall_hmbt_cll_destroy(struct hmbt_cll_handler *h) {
 	mm_free(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_insert(struct hmbt_cll_handler *h, void *data) {
 	return h->insert(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_delete(struct hmbt_cll_handler *h, void *data) {
 	return h->del(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_search(struct hmbt_cll_handler *h, void *data) {
 	return h->search(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_serialize(struct hmbt_cll_handler *h, pall_fd_t fd) {
 	return h->serialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_hmbt_cll_unserialize(struct hmbt_cll_handler *h, pall_fd_t fd) {
 	return h->unserialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct hmbt_cll_stat *pall_hmbt_cll_stat(struct hmbt_cll_handler *h) {
 	return h->stat(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_stat_reset(struct hmbt_cll_handler *h) {
 	h->stat_reset(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_cll_count(struct hmbt_cll_handler *h) {
 	return h->count(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_pope(struct hmbt_cll_handler *h, void *data) {
 	return h->pope(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_poph_elem(struct hmbt_cll_handler *h, void *data) {
 	return h->poph_elem(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_poph_index(struct hmbt_cll_handler *h, ui32_t index) {
 	return h->poph_index(h, index);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_collapse(struct hmbt_cll_handler *h) {
 	h->collapse(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_hmbt_cll_iterate(struct hmbt_cll_handler *h) {
 	return h->iterate(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_hmbt_cll_rewind(struct hmbt_cll_handler *h, int to) {
 	h->rewind(h, to);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_cll_set_config(struct hmbt_cll_handler *h, ui32_t flags) {
 	return h->set_config(h, flags);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_hmbt_cll_get_config(struct hmbt_cll_handler *h) {
 	return h->get_config(h);
 }

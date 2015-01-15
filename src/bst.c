@@ -286,6 +286,9 @@ static void _bst_rewind(struct bst_handler *handler, int to) {
 	handler->_stat.rewind ++;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct bst_handler *pall_bst_init(
 		int (*compare) (const void *d1, const void *d2),
 		void (*destroy) (void *data),
@@ -340,6 +343,9 @@ struct bst_handler *pall_bst_init(
 	return handler;
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_destroy(struct bst_handler *h) {
 	h->collapse(h);
 
@@ -351,46 +357,79 @@ void pall_bst_destroy(struct bst_handler *h) {
 	mm_free(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_insert(struct bst_handler *h, void *data) {
 	return h->insert(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_delete(struct bst_handler *h, void *data) {
 	return h->del(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_bst_search(struct bst_handler *h, void *data) {
 	return h->search(h, data);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_serialize(struct bst_handler *h, pall_fd_t fd) {
 	return h->serialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 int pall_bst_unserialize(struct bst_handler *h, pall_fd_t fd) {
 	return h->unserialize(h, fd);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 struct bst_stat *pall_bst_stat(struct bst_handler *h) {
 	return h->stat(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_stat_reset(struct bst_handler *h) {
 	h->stat_reset(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 ui32_t pall_bst_count(struct bst_handler *h) {
 	return h->count(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_collapse(struct bst_handler *h) {
 	h->collapse(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void *pall_bst_iterate(struct bst_handler *h) {
 	return h->iterate(h);
 }
 
+#ifdef COMPILE_WIN32
+DLLIMPORT
+#endif
 void pall_bst_rewind(struct bst_handler *h, int to) {
 	h->rewind(h, to);
 }

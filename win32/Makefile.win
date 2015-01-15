@@ -1,0 +1,51 @@
+# Project: libpall
+# Makefile created by Dev-C++ 5.8.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = dllmain.o ../src/bst.o ../src/cll.o ../src/fifo.o ../src/hmbt_bst.o ../src/hmbt_cll.o ../src/lifo.o ../src/mm.o
+LINKOBJ  = dllmain.o ../src/bst.o ../src/cll.o ../src/fifo.o ../src/hmbt_bst.o ../src/hmbt_cll.o ../src/lifo.o ../src/mm.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -lws2_32
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"../include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++" -I"../include"
+BIN      = libpall.dll
+CXXFLAGS = $(CXXINCS) -DBUILDING_DLL=1 -DCOMPILE_WIN32=1
+CFLAGS   = $(INCS) -DBUILDING_DLL=1 -DCOMPILE_WIN32=1
+RM       = rm.exe -f
+DEF      = liblibpall.def
+STATIC   = liblibpall.a
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN) $(DEF) $(STATIC)
+
+$(BIN): $(LINKOBJ)
+	$(CC) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
+
+dllmain.o: dllmain.c
+	$(CC) -c dllmain.c -o dllmain.o $(CFLAGS)
+
+../src/bst.o: ../src/bst.c
+	$(CC) -c ../src/bst.c -o ../src/bst.o $(CFLAGS)
+
+../src/cll.o: ../src/cll.c
+	$(CC) -c ../src/cll.c -o ../src/cll.o $(CFLAGS)
+
+../src/fifo.o: ../src/fifo.c
+	$(CC) -c ../src/fifo.c -o ../src/fifo.o $(CFLAGS)
+
+../src/hmbt_bst.o: ../src/hmbt_bst.c
+	$(CC) -c ../src/hmbt_bst.c -o ../src/hmbt_bst.o $(CFLAGS)
+
+../src/hmbt_cll.o: ../src/hmbt_cll.c
+	$(CC) -c ../src/hmbt_cll.c -o ../src/hmbt_cll.o $(CFLAGS)
+
+../src/lifo.o: ../src/lifo.c
+	$(CC) -c ../src/lifo.c -o ../src/lifo.o $(CFLAGS)
+
+../src/mm.o: ../src/mm.c
+	$(CC) -c ../src/mm.c -o ../src/mm.o $(CFLAGS)

@@ -27,5 +27,22 @@
 #ifndef LIBPALL_CONFIG_H
 #define LIBPALL_CONFIG_H
 
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
+ #ifndef COMPILE_WIN32
+  #define COMPILE_WIN32 1
+ #endif
+#endif
+
+#ifdef COMPILE_WIN32
+ #include <winsock2.h>
+ #include <windows.h>
+
+ #if BUILDING_DLL
+  #define DLLIMPORT __declspec(dllexport)
+ #else
+  #define DLLIMPORT __declspec(dllimport)
+ #endif
+#endif
+
 #endif
 
