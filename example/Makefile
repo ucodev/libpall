@@ -1,5 +1,5 @@
 CC=`cat ../.compiler`
-CCFLAGS=-I../src/ -fstrict-aliasing -O2 -Wall -Werror -pedantic -std=c1x
+CCFLAGS=-I../include -fstrict-aliasing -O2 -Wall -Werror -pedantic
 LDFLAGS=../src/libpall.so -s
 ELFLAGS=`cat ../.elflags`
 

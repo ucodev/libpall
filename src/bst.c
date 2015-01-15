@@ -3,9 +3,9 @@
  * @brief Portable Abstracted Linked Lists Library (libpall)
  *        Binary Search Tree interface
  *
- * Date: 13-05-2014
+ * Date: 15-01-2015
  * 
- * Copyright 2012-2014 Pedro A. Hortas (pah@ucodev.org)
+ * Copyright 2012-2015 Pedro A. Hortas (pah@ucodev.org)
  *
  * This file is part of libpall.
  *
@@ -31,6 +31,7 @@
 #include <search.h>
 #include <assert.h>
 
+#include "config.h"
 #include "mm.h"
 #include "pall.h"
 #include "bst.h"
