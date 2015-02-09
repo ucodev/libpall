@@ -4,16 +4,17 @@ CCFLAGS=-fPIC -fstrict-aliasing -O2 -Wall -Werror -pedantic
 ECFLAGS=`cat ../.ecflags`
 LDFLAGS=-shared -s
 ELFLAGS=`cat ../.elflags`
+ARCHFLAGS=`cat ../.archflags`
 TARGET=libpall.so
 
 all:
-	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} -c bst.c
-	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} -c cll.c
-	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} -c fifo.c
-	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} -c hmbt_bst.c
-	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} -c hmbt_cll.c
-	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} -c lifo.c
-	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} -c mm.c
+	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c bst.c
+	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c cll.c
+	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c fifo.c
+	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c hmbt_bst.c
+	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c hmbt_cll.c
+	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c lifo.c
+	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c mm.c
 	${CC} ${LDFLAGS} -o ${TARGET} bst.o cll.o fifo.o hmbt_bst.o hmbt_cll.o lifo.o mm.o ${ELFLAGS}
 
 clean:

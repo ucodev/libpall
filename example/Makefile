@@ -2,23 +2,24 @@ CC=`cat ../.compiler`
 CCFLAGS=-I../include -std=c1x -fstrict-aliasing -O2 -Wall -Werror -pedantic
 LDFLAGS=../src/libpall.so -s
 ELFLAGS=`cat ../.elflags`
+ARCHFLAGS=`cat ../.archflags`
 
 all:
-	${CC} ${CCFLAGS} -c eg_bst_simple.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_bst_simple.c
 	${CC} -o eg_bst_simple eg_bst_simple.o ${LDFLAGS} ${ELFLAGS}
-	${CC} ${CCFLAGS} -c eg_cll_simple.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_cll_simple.c
 	${CC} -o eg_cll_simple eg_cll_simple.o ${LDFLAGS} ${ELFLAGS}
-	${CC} ${CCFLAGS} -c eg_cll_config.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_cll_config.c
 	${CC} -o eg_cll_config eg_cll_config.o ${LDFLAGS} ${ELFLAGS}
-	${CC} ${CCFLAGS} -c eg_hmbt-bst_simple.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_hmbt-bst_simple.c
 	${CC} -o eg_hmbt-bst_simple eg_hmbt-bst_simple.o ${LDFLAGS} ${ELFLAGS}
-	${CC} ${CCFLAGS} -c eg_hmbt-cll_simple.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_hmbt-cll_simple.c
 	${CC} -o eg_hmbt-cll_simple eg_hmbt-cll_simple.o ${LDFLAGS} ${ELFLAGS}
-	${CC} ${CCFLAGS} -c eg_hmbt-cll_config.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_hmbt-cll_config.c
 	${CC} -o eg_hmbt-cll_config eg_hmbt-cll_config.o ${LDFLAGS} ${ELFLAGS}
-	${CC} ${CCFLAGS} -c eg_fifo_simple.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_fifo_simple.c
 	${CC} -o eg_fifo_simple eg_fifo_simple.o ${LDFLAGS} ${ELFLAGS}
-	${CC} ${CCFLAGS} -c eg_lifo_simple.c
+	${CC} ${CCFLAGS} ${ARCHFLAGS} -c eg_lifo_simple.c
 	${CC} -o eg_lifo_simple eg_lifo_simple.o ${LDFLAGS} ${ELFLAGS}
 
 clean:
