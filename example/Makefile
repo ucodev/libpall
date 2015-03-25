@@ -1,6 +1,6 @@
 CC=`cat ../.compiler`
-CCFLAGS=-I../include -std=c99 -fstrict-aliasing -O2 -Wall -Werror -pedantic
-LDFLAGS=../src/libpall.so -s
+CCFLAGS=-I../include -std=c99
+LDFLAGS=../src/libpall.`cat ../.extlib` -s
 ELFLAGS=`cat ../.elflags`
 ARCHFLAGS=`cat ../.archflags`
 

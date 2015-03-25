@@ -1,11 +1,11 @@
 CC=`cat ../.compiler`
 INCLUDEDIRS=-I../include
-CCFLAGS=-fPIC -fstrict-aliasing -O2 -Wall -Werror -pedantic
+CCFLAGS=
 ECFLAGS=`cat ../.ecflags`
 LDFLAGS=-shared -s
 ELFLAGS=`cat ../.elflags`
 ARCHFLAGS=`cat ../.archflags`
-TARGET=libpall.so
+TARGET=libpall.`cat ../.extlib`
 
 all:
 	${CC} ${INCLUDEDIRS} ${CCFLAGS} ${ECFLAGS} ${ARCHFLAGS} -c bst.c
